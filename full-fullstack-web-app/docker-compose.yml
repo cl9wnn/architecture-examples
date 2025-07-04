@@ -24,6 +24,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__PostgresDbConnection=Host=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - AuthOptions__Issuer=http://localhost:5000
+      - AuthOptions__Audience=http://localhost:3000
+      - AuthOptions__SecretKey=${AUTH_SECRET_KEY}
+      - AuthOptions__AccessTokenExpiredAtMinutes=2
+      - AuthOptions__RefreshTokenExpiredAtDays=7
       
   db:
     container_name: postgres
