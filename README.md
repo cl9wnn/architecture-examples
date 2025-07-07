@@ -1,20 +1,7 @@
-﻿# Готовые шаблоны веб-приложений
+﻿# Примеры архитектур 
 
-
-📁 fullstack-web-app
-
-- **Backend**: ASP.NET Core 8+
-- **Frontend**: React.js (Tailwind CSS, Axios)
-
-<br>
-
-📁 full-fullstack-web-app
-
-- **Backend**: ASP.NET Core 8+ (Clean Architecture, REST API)
-- **Frontend**: React.js (Tailwind CSS, Axios)
-- **Database**: PostgreSQL (ORM - Entity Framework Core)
-- **Logging & Monitoring**: Serilog + Seq
-- **Auth**: Refresh token-based authorization (JWT)
+Архитектуры и шаблоны для собственного использования, не претендуют на правильность.
+## Важно!
 
 ⚠️ Для запуска в IDE нужно скопировать структуру из **appsettings.json** в новый файл (appsettings.Secrets.json или appsettings.Development.json) и заполнить ее конфигурационными данными.
 
@@ -27,4 +14,30 @@ POSTGRES_PASSWORD=password
 POSTGRES_DB=testDb
 AUTH_SECRET_KEY=SECRETKEY
 ```
+
+## Описание
+
+📁 fullstack-web-app
+
+- **Backend**: ASP.NET Core 8+
+- **Frontend**: React.js (Tailwind CSS, Axios)
+
 <br>
+
+📁 full-fullstack-web-app-rest
+
+- **Backend**: ASP.NET Core 8+ (REST API, Clean Architecture)
+- **Frontend**: React + TypeScript (Axios, Tailwind CSS)
+- **Database**: PostgreSQL (ORM - Entity Framework Core)
+- **Logging & Monitoring**: Serilog + Seq
+- **Auth**: Refresh token-based authorization (JWT)
+
+<br>
+
+📁 full-fullstack-web-app-graphql
+
+- **Backend**: ASP.NET Core 8+ (GraphQL, Clean Architecture)
+- **Frontend**: React + TypeScript (Apollo Client, Tailwind CSS)
+- **Database**: PostgreSQL (ORM - Entity Framework Core)
+- **Logging & Monitoring**: Serilog + Seq
+- **Auth**: -
