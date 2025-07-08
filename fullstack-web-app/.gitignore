@@ -354,6 +354,7 @@ MigrationBackup/
 
 # Ignore configuration file with API keys
 appsettings.Secrets.json
+appsettings.Development.json
 
 # Logs
 logs

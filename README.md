@@ -17,16 +17,16 @@ AUTH_SECRET_KEY=SECRETKEY
 
 ## Описание
 
-📁 fullstack-web-app
+### 📁 fullstack-web-app
 
 - **Backend**: ASP.NET Core 8+
-- **Frontend**: React.js (Tailwind CSS, Axios)
+- **Frontend**: React.js (Axios)
 
 <br>
 
-📁 full-fullstack-web-app-rest
+### 📁 fullstack-web-app-rest
 
-- **Backend**: ASP.NET Core 8+ (REST API, Clean Architecture)
+- **Backend**: ASP.NET Core 8+ (REST API + Clean Architecture)
 - **Frontend**: React + TypeScript (Axios, Tailwind CSS)
 - **Database**: PostgreSQL (ORM - Entity Framework Core)
 - **Logging & Monitoring**: Serilog + Seq
@@ -34,10 +34,25 @@ AUTH_SECRET_KEY=SECRETKEY
 
 <br>
 
-📁 full-fullstack-web-app-graphql
+### 📁 fullstack-web-app-graphql
 
-- **Backend**: ASP.NET Core 8+ (GraphQL, Clean Architecture)
+- **Backend**: ASP.NET Core 8+ (GraphQL + Clean Architecture)
 - **Frontend**: React + TypeScript (Apollo Client, Tailwind CSS)
 - **Database**: PostgreSQL (ORM - Entity Framework Core)
 - **Logging & Monitoring**: Serilog + Seq
 - **Auth**: -
+
+<br>
+
+### 📁 fullstack-web-app-cqrs
+
+
+- **Backend**: ASP.NET Core 8 (REST API, CQRS + VSA + CA)
+- **Frontend**: React + TypeScript (Axios, Tailwind CSS)
+- **Database**: PostgreSQL (ORM - Entity Framework Core)
+- **Logging & Monitoring**: Serilog + Seq
+- **Auth**: -
+
+⚠️ Упрощенный пример паттерна CQRS с использованием библиотеки MediatR (**MediatR ≠ CQRS**), без разделения на Read DD и Write DB и без оптимизации чтения и записи.
+
+<br>
