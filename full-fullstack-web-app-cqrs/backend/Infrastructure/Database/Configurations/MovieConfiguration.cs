@@ -1,12 +1,12 @@
-using Infrastructure.Database.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Database.Configurations;
 
-public class MovieConfiguration: IEntityTypeConfiguration<MovieEntity>
+public class MovieConfiguration: IEntityTypeConfiguration<Movie>
 {
-    public void Configure(EntityTypeBuilder<MovieEntity> builder)
+    public void Configure(EntityTypeBuilder<Movie> builder)
     {
         builder.ToTable("Movies");
         

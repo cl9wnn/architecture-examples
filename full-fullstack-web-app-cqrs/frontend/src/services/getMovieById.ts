@@ -19,6 +19,6 @@ export const getMovieById = async (id: string): Promise<MovieResponse> => {
       }
     }
 
-    throw new Error("Couldn't upload movie");
+    throw new Error("Couldn't get movie");
   }
 };

@@ -1,5 +1,4 @@
 ﻿using Application.Utils;
-using Domain.Models;
 using MediatR;
 
 namespace Application.Features.Movies.Commands.Create;

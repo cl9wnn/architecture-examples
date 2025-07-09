@@ -1,6 +1,6 @@
 ﻿using Application.Utils;
 using Domain.Abstractions.Repositories;
-using Domain.Models;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Movies.Queries.Get;

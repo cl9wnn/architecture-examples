@@ -1,7 +1,7 @@
 ﻿using Application.Utils;
 using AutoMapper;
 using Domain.Abstractions.Repositories;
-using Domain.Models;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Movies.Commands.Create;

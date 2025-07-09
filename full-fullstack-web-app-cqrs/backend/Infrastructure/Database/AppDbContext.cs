@@ -1,13 +1,13 @@
-﻿using Infrastructure.Database.Configurations;
-using Infrastructure.Database.Entities;
+﻿using Domain.Entities;
+using Infrastructure.Database.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options): DbContext(options)
 {
-    public DbSet<ActorEntity> Actors { get; set; }
-    public DbSet<MovieEntity> Movies { get; set; }
+    public DbSet<Actor> Actors { get; set; }
+    public DbSet<Movie> Movies { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

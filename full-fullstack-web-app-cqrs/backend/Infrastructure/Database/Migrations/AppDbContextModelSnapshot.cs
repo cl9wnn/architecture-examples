@@ -21,7 +21,7 @@ namespace Infrastructure.Database.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ActorEntityMovieEntity", b =>
+            modelBuilder.Entity("ActorMovie", b =>
                 {
                     b.Property<int>("ActorsId")
                         .HasColumnType("integer");
@@ -33,10 +33,10 @@ namespace Infrastructure.Database.Migrations
 
                     b.HasIndex("MoviesId");
 
-                    b.ToTable("ActorEntityMovieEntity");
+                    b.ToTable("ActorMovie");
                 });
 
-            modelBuilder.Entity("Infrastructure.Database.Entities.ActorEntity", b =>
+            modelBuilder.Entity("Domain.Entities.Actor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace Infrastructure.Database.Migrations
                     b.ToTable("Actors", (string)null);
                 });
 
-            modelBuilder.Entity("Infrastructure.Database.Entities.MovieEntity", b =>
+            modelBuilder.Entity("Domain.Entities.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,15 +85,15 @@ namespace Infrastructure.Database.Migrations
                     b.ToTable("Movies", (string)null);
                 });
 
-            modelBuilder.Entity("ActorEntityMovieEntity", b =>
+            modelBuilder.Entity("ActorMovie", b =>
                 {
-                    b.HasOne("Infrastructure.Database.Entities.ActorEntity", null)
+                    b.HasOne("Domain.Entities.Actor", null)
                         .WithMany()
                         .HasForeignKey("ActorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Infrastructure.Database.Entities.MovieEntity", null)
+                    b.HasOne("Domain.Entities.Movie", null)
                         .WithMany()
                         .HasForeignKey("MoviesId")
                         .OnDelete(DeleteBehavior.Cascade)

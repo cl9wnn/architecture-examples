@@ -4,8 +4,6 @@ using API.Models.Movies.Requests;
 using API.Validation;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Infrastructure.Database.Mappings;
-using MediatR;
 using Path = System.IO.Path;
 
 namespace API.Extensions;
@@ -32,8 +30,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddAutoMapper(expression =>
         {
-            expression.AddProfile<ApiMappingProfile>();
-            expression.AddProfile<InfrastructureMappingProfile>();
+            expression.AddProfile<MappingProfile>();
         });
         
         return services;

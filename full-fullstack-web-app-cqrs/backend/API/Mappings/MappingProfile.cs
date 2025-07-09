@@ -3,13 +3,13 @@ using API.Models.Movies.Responses;
 using Application.Features.Movies.Commands.Create;
 using Application.Features.Movies.Commands.Update;
 using AutoMapper;
-using Domain.Models;
+using Domain.Entities;
 
 namespace API.Mappings;
 
-public class ApiMappingProfile: Profile
+public class MappingProfile: Profile
 {
-    public ApiMappingProfile()
+    public MappingProfile()
     {
         CreateMap<CreateMovieRequest, CreateMovieCommand>();
         CreateMap<Movie, MovieResponse>();

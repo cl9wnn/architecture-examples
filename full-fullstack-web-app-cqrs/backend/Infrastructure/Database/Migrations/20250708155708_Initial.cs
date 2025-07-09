@@ -41,7 +41,7 @@ namespace Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ActorEntityMovieEntity",
+                name: "ActorMovie",
                 columns: table => new
                 {
                     ActorsId = table.Column<int>(type: "integer", nullable: false),
@@ -49,15 +49,15 @@ namespace Infrastructure.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ActorEntityMovieEntity", x => new { x.ActorsId, x.MoviesId });
+                    table.PrimaryKey("PK_ActorMovie", x => new { x.ActorsId, x.MoviesId });
                     table.ForeignKey(
-                        name: "FK_ActorEntityMovieEntity_Actors_ActorsId",
+                        name: "FK_ActorMovie_Actors_ActorsId",
                         column: x => x.ActorsId,
                         principalTable: "Actors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ActorEntityMovieEntity_Movies_MoviesId",
+                        name: "FK_ActorMovie_Movies_MoviesId",
                         column: x => x.MoviesId,
                         principalTable: "Movies",
                         principalColumn: "Id",
@@ -65,8 +65,8 @@ namespace Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActorEntityMovieEntity_MoviesId",
-                table: "ActorEntityMovieEntity",
+                name: "IX_ActorMovie_MoviesId",
+                table: "ActorMovie",
                 column: "MoviesId");
         }
 
@@ -74,7 +74,7 @@ namespace Infrastructure.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ActorEntityMovieEntity");
+                name: "ActorMovie");
 
             migrationBuilder.DropTable(
                 name: "Actors");

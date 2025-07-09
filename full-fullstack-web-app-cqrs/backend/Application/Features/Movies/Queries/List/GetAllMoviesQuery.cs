@@ -1,5 +1,5 @@
 ﻿using Application.Utils;
-using Domain.Models;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Movies.Queries.List;
