@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+package calculator;
+
+service Calculator {
+  rpc Add (OperationRequest) returns (OperationResponse);
+  rpc Subtract (OperationRequest) returns (OperationResponse);
+  rpc Multiply (OperationRequest) returns (OperationResponse);
+  rpc Divide (OperationRequest) returns (OperationResponse);
+}
+
+message OperationRequest {
+  double number1 = 1;
+  double number2 = 2;
+}
+
+message OperationResponse {
+  double result = 1;
+}

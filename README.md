@@ -32,6 +32,7 @@ AUTH_SECRET_KEY=SECRETKEY
 - **Logging & Monitoring**: Serilog + Seq
 - **Auth**: Refresh token-based authorization (JWT)
 
+
 <br>
 
 ### 📁 fullstack-web-app-graphql
