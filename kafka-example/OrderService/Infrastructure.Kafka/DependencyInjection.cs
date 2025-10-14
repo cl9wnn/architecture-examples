@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Messaging.Kafka;
 
-public static class KafkaExtensions
+public static class DependencyInjection
 {
     public static void AddKafkaProducer<TMessage>(this IServiceCollection services,
         IConfigurationSection configurationSection)

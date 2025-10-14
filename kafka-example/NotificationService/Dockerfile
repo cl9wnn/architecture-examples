@@ -8,11 +8,12 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 COPY API/API.csproj ./API/
-COPY Infrastructure.Kafka/Infrastructure.Kafka.csproj ./Infrastructure.Kafka/
+COPY Application/Application.csproj ./Application/
 COPY Domain/Domain.csproj ./Domain/
-COPY OrderService.sln .
+COPY Infrastructure.Kafka/Infrastructure.Kafka.csproj ./Infrastructure.Kafka/
+COPY NotificationService.sln .
 
-RUN dotnet restore OrderService.sln
+RUN dotnet restore NotificationService.sln
 
 COPY . .
 

@@ -25,6 +25,11 @@ services:
       CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
     volumes:
       - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "bash", "-c", "nc -z localhost 9092"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -47,7 +52,22 @@ services:
     ports:
       - "5000:8080"
     depends_on:
-      - kafka
+      kafka:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - KAFKA__BOOTSTRAP_SERVERS=kafka:29092
+
+  notification-service:
+    container_name: notification-service
+    build:
+      context: ./NotificationService
+      dockerfile: Dockerfile
+    ports:
+      - "5001:8080"
+    depends_on:
+      kafka:
+        condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - KAFKA__BOOTSTRAP_SERVERS=kafka:29092

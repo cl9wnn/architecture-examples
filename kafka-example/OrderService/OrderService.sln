@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{3FAD63C0-CCB4-4607-8D77-652EC1767741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging.Kafka", "Messaging.Kafka\Messaging.Kafka.csproj", "{B868B0DA-5632-45C3-AAD6-7FF6E0A20F96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Kafka", "Infrastructure.Kafka\Infrastructure.Kafka.csproj", "{B868B0DA-5632-45C3-AAD6-7FF6E0A20F96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{91CFF13B-E4DE-4848-9F10-4F9007EF0F7D}"
 EndProject
