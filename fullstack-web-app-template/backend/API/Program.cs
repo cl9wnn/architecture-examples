@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddCors(options =>
 {
@@ -24,6 +24,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection(); 
 app.UseCors();
-app.MapControllers();
 
+app.MapGet("/api/test", () =>
+{
+    var message = new
+    {
+        message = "Answer from ASP.NET",
+        timestamp = DateTime.Now
+    };
+    
+    return Results.Ok(message);
+});
+    
 app.Run();
