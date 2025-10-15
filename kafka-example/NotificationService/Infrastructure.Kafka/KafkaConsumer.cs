@@ -18,12 +18,13 @@ public class KafkaConsumer<TMessage> : BackgroundService
     {
         _messageHandler = messageHandler;
         _logger = logger;
+        
         var config = new ConsumerConfig
         {
             BootstrapServers = options.Value.BootstrapServers,
             GroupId = options.Value.GroupId,
-            AutoOffsetReset = AutoOffsetReset.Earliest,
-            EnableAutoCommit = true,
+            AutoOffsetReset = Enum.Parse<AutoOffsetReset>(options.Value.AutoOffsetReset, true),
+            EnableAutoCommit = options.Value.EnableAutoCommit,
         };
 
         _topic = options.Value.Topic;
@@ -34,16 +35,16 @@ public class KafkaConsumer<TMessage> : BackgroundService
     }
 
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        return Task.Run(() => ConsumeAsync(stoppingToken), stoppingToken);
-    }
+        => ConsumeAsync(stoppingToken);
 
     public override Task StopAsync(CancellationToken cancellationToken)
     {
         _consumer.Close();
+        _consumer.Dispose();
         return base.StopAsync(cancellationToken);
     }
-    private async Task? ConsumeAsync(CancellationToken stoppingToken)
+    
+    private async Task ConsumeAsync(CancellationToken stoppingToken)
     {
         _consumer.Subscribe(_topic);
 
@@ -51,13 +52,28 @@ public class KafkaConsumer<TMessage> : BackgroundService
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var result = _consumer.Consume(stoppingToken);
-                await _messageHandler.HandleAsync(result.Message.Value, stoppingToken);
+                try
+                {
+                    var result = _consumer.Consume(stoppingToken);
+                    if (result?.Message == null)
+                        continue;
+                    
+                    await _messageHandler.HandleAsync(result.Message.Value, stoppingToken);
+                    _consumer.Commit(result);
+                }
+                catch (ConsumeException ex)
+                {
+                    _logger.LogError(ex, "Kafka consume error: {Reason}", ex.Error.Reason);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error while processing message");
+                }
             }
         }
-        catch (ConsumeException ex)
+        catch (OperationCanceledException)
         {
-            _logger.LogError("Kafka consume error: {ex}", ex.Message);
+            _logger.LogInformation("Kafka consumer stopping...");
         }
     }
 }
