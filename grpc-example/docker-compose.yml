@@ -1,22 +1,25 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  calculator: # gRPC сервер
-    container_name: calculator-service
+  math-service: # gRPC сервер
+    container_name: math-service
     build:
-      context: ./server
+      context: ./MathService
       dockerfile: Dockerfile
     ports:
       - "5001:8080"  
     environment:
       - ASPNETCORE_Kestrel__Endpoints__Grpc__Protocols=Http2
+      - ASPNETCORE_ENVIRONMENT=Development
 
-  calculatorclient: # Web API клиент
-    container_name: calculator-client
+  calculator-service: # Web API клиент
+    container_name: calculator-service
     build:
-      context: ./client
+      context: ./CalculatorService
       dockerfile: Dockerfile
     ports:
       - "5002:8080"  
     depends_on:
-      - calculator
+      - math-service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

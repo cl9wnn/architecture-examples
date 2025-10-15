@@ -7,14 +7,14 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY CalculatorClient/CalculatorClient.csproj ./CalculatorClient/
-COPY CalculatorClient.sln .
+COPY API/API.csproj ./API/
+COPY CalculatorService.sln .
 
-RUN dotnet restore CalculatorClient.sln
+RUN dotnet restore CalculatorService.sln
 
 COPY . .
 
-WORKDIR /src/CalculatorClient
+WORKDIR /src/API
 RUN dotnet build -c $BUILD_CONFIGURATION -o /app/build
 
 
@@ -26,4 +26,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-ENTRYPOINT ["dotnet", "CalculatorClient.dll"]
+ENTRYPOINT ["dotnet", "API.dll"]

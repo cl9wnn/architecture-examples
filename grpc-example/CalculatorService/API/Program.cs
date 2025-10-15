@@ -3,9 +3,18 @@ using Grpc.Core;
 using Grpc.Net.Client;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-var channel = GrpcChannel.ForAddress("http://calculator:8080");
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+var channel = GrpcChannel.ForAddress("http://math-service:8080");
 
 var client = new Calculator.Calculator.CalculatorClient(channel);
 
@@ -63,4 +72,5 @@ app.MapGet("/divide", async (double x, double y) =>
         return Results.Problem(e.Status.Detail);
     }
 });
+
 app.Run();

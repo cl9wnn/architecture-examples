@@ -8,9 +8,9 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 COPY Calculator/Calculator.csproj ./Calculator/
-COPY Calculator.sln .
+COPY MathService.sln .
 
-RUN dotnet restore Calculator.sln
+RUN dotnet restore MathService.sln
 
 COPY . .
 

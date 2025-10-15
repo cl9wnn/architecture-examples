@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorClient", "CalculatorClient\CalculatorClient.csproj", "{24F7E046-5F38-443E-9EED-8C4B32F58314}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{24F7E046-5F38-443E-9EED-8C4B32F58314}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

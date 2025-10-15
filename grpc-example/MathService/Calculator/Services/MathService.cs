@@ -2,26 +2,35 @@
 
 namespace Calculator.Services;
 
-public class CalculatorService(ILogger<CalculatorService> logger): Calculator.CalculatorBase
+public class MathService(ILogger<MathService> logger): Calculator.CalculatorBase
 {
     public override Task<OperationResponse> Add(OperationRequest request, ServerCallContext context)
     {
         var operationResult = request.Number1 + request.Number2;
-        logger.LogInformation($"Add: {request.Number1} + {request.Number2} = {operationResult}");
+        
+        logger.LogInformation("Add: {Number1} + {Number2} = {operationResult}",
+            request.Number1, request.Number2, operationResult);
+        
         return Task.FromResult(new OperationResponse { Result = operationResult });
     }
 
     public override Task<OperationResponse> Subtract(OperationRequest request, ServerCallContext context)
     {
         var operationResult = request.Number1 - request.Number2;
-        logger.LogInformation($"Subtract: {request.Number1} - {request.Number2} = {operationResult}");
+        
+        logger.LogInformation("Subtract: {Number1} - {Number2} = {operationResult}",
+            request.Number1, request.Number2, operationResult);       
+        
         return Task.FromResult(new OperationResponse { Result = operationResult });
     }
 
     public override Task<OperationResponse> Multiply(OperationRequest request, ServerCallContext context)
     {
         var operationResult = request.Number1 * request.Number2;
-        logger.LogInformation($"Multiply: {request.Number1} * {request.Number2} = {operationResult}");
+        
+        logger.LogInformation("Multiply: {Number1} * {Number2} = {operationResult}",
+            request.Number1, request.Number2, operationResult);        
+        
         return Task.FromResult(new OperationResponse { Result = operationResult });
     }
 
@@ -34,7 +43,10 @@ public class CalculatorService(ILogger<CalculatorService> logger): Calculator.Ca
         }
         
         var operationResult = request.Number1 / request.Number2;
-        logger.LogInformation($"Divide: {request.Number1} / {request.Number2} = {operationResult}");
+        
+        logger.LogInformation("Divide: {Number1} / {Number2} = {operationResult}",
+            request.Number1, request.Number2, operationResult);
+        
         return Task.FromResult(new OperationResponse { Result = operationResult });
     }
 }
