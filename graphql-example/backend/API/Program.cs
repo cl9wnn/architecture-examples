@@ -13,19 +13,12 @@ builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.ConfigureSerilog();
 builder.Services.AddControllers();
 builder.Services.AddCustomCors();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerDocumentation(builder.Environment);
 builder.Services.AddPostgresDb(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddGraphQl();
 builder.Services.AddValidation();
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwaggerDocumentation(builder.Environment);
-}
 
 app.UseRequestResponseLogging();
 app.UseCors();

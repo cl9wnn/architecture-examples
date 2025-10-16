@@ -38,19 +38,6 @@ public static class ServiceCollectionExtensions
         return services;
     }
     
-    public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services, IWebHostEnvironment env)
-    {
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new() { Title = env.ApplicationName, Version = "v1" });
-
-            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-        });
-
-        return services;
-    }
-
     public static IServiceCollection AddValidation(this IServiceCollection services)
     {
         services.AddScoped<IValidator<CreateMovieInput>, CreateMovieValidator>();
