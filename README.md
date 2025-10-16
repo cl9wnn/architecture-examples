@@ -38,7 +38,7 @@ AUTH_SECRET_KEY=SECRETKEY
 
 <br>
 
-### 📁 fullstack-web-app-cqrs
+### 📁 fullstack-web-app-cqrs-template
 
 
 - **Backend**: ASP.NET Core 8 (REST API, CQRS + VSA + CA)
@@ -46,7 +46,7 @@ AUTH_SECRET_KEY=SECRETKEY
 - **Database**: PostgreSQL (ORM - Entity Framework Core)
 - **Logging & Monitoring**: Serilog + Seq
 
-📌 Упрощенный пример паттерна CQRS с использованием библиотеки MediatR (**MediatR ≠ CQRS**), без разделения на Read DB и Write DB и без оптимизации чтения и записи.
+📌 Готовый шаблон паттерна CQRS с использованием библиотеки MediatR (**MediatR ≠ CQRS**), без разделения на Read DB и Write DB и без оптимизации чтения и записи.
 
 <br>
 
