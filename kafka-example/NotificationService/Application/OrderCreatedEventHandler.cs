@@ -3,9 +3,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Application;
 
-public class OrderCreatedMessageHandler(ILogger<OrderCreatedMessageHandler> logger) : IMessageHandler<OrderCreatedMessage>
+public class OrderCreatedEventHandler(ILogger<OrderCreatedEventHandler> logger) : IMessageHandler<OrderCreatedEvent>
 {
-    public Task HandleAsync(OrderCreatedMessage message, CancellationToken cancellationToken)
+    public Task HandleAsync(OrderCreatedEvent message, CancellationToken cancellationToken)
     {
         logger.LogInformation("Order №{Id} ({name}) is created at {time}.", message.Id, message.Name, message.CreatedAt);
         // Notify user about the creation order by email, sms, push-messages...

@@ -4,8 +4,8 @@ using Messaging.Kafka;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSingleton<IMessageHandler<OrderCreatedMessage>, OrderCreatedMessageHandler>();
-builder.Services.AddKafkaConsumer<OrderCreatedMessage>(builder.Configuration.GetSection("Kafka:OrderCreated"));
+builder.Services.AddSingleton<IMessageHandler<OrderCreatedEvent>, OrderCreatedEventHandler>();
+builder.Services.AddKafkaConsumer<OrderCreatedEvent>(builder.Configuration.GetSection("Kafka:OrderCreated"));
 
 var app = builder.Build();
 

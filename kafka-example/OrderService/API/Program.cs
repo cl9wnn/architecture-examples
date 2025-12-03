@@ -4,7 +4,7 @@ using Messaging.Kafka;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddKafkaProducer<Order>(builder.Configuration.GetSection("Kafka:Order"));
+builder.Services.AddKafkaProducer<OrderCreatedEvent>(builder.Configuration.GetSection("Kafka:OrderCreated"));
 
 var app = builder.Build();
 
@@ -14,11 +14,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapPost("/api/orders", async (IMessageProducer<Order> producer) =>
+app.MapPost("/api/orders", async (IMessageProducer<OrderCreatedEvent> producer) =>
 {
-    await producer.ProduceAsync(new Order
+    await producer.ProduceAsync(new OrderCreatedEvent
     {
-        Name = "Milk"
+        Id = Guid.NewGuid().ToString(),
+        Name = "Milk",
+        CreatedAt = DateTime.UtcNow,
     });
 });
 
