@@ -1,4 +1,4 @@
-using API.GraphQL.Movies.Inputs;
+using API.GraphQL.Movies.Models;
 using AutoMapper;
 using Domain.Models;
 

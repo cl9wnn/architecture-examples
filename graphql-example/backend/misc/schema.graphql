@@ -1,0 +1,42 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Actor {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  movies: [Movie!]!
+}
+
+type Movie {
+  id: Int!
+  title: String!
+  description: String!
+  actors: [Actor!]!
+}
+
+type Mutation {
+  createMovie(input: CreateMovieInput!): Movie! @cost(weight: "10")
+  deleteMovie(id: Int!): Boolean! @cost(weight: "10")
+}
+
+type Query {
+  allMovies: [Movie!]! @cost(weight: "10")
+  movieById(id: Int!): Movie! @cost(weight: "10")
+}
+
+input CreateActorInput {
+  firstName: String!
+  lastName: String!
+}
+
+input CreateMovieInput {
+  title: String!
+  description: String!
+  actors: [CreateActorInput!]
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION

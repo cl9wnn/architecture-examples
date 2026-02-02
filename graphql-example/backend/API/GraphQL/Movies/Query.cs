@@ -4,7 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.GraphQL.Movies;
 
-public class MovieQueries
+[QueryType]
+public class Query
 {
     public async Task<List<Movie>> GetAllMovies([Service] IMovieService movieService)
     {

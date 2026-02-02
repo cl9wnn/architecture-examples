@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using API.GraphQL.Movies;
-using API.GraphQL.Movies.Inputs;
+using API.GraphQL.Movies.Models;
 using API.GraphQL.Movies.Validators;
 using API.Mappings;
 using FluentValidation;
@@ -49,8 +49,7 @@ public static class ServiceCollectionExtensions
     {
         services
             .AddGraphQLServer()
-            .AddQueryType<MovieQueries>()
-            .AddMutationType<MovieMutations>()
+            .AddTypes()
             .AddProjections()
             .AddFiltering()
             .AddSorting();

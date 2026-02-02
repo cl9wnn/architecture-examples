@@ -1,4 +1,4 @@
-using API.GraphQL.Movies.Inputs;
+using API.GraphQL.Movies.Models;
 using AutoMapper;
 using Domain.Abstractions.Services;
 using Domain.Models;
@@ -6,7 +6,8 @@ using FluentValidation;
 
 namespace API.GraphQL.Movies;
 
-public class MovieMutations
+[MutationType]
+public class Mutation
 {
     public async Task<Movie> CreateMovie([Service] IMovieService service, [Service] IMapper mapper,
         CreateMovieInput input, [Service] IValidator<CreateMovieInput> validator)

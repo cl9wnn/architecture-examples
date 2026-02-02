@@ -1,4 +1,4 @@
-namespace API.GraphQL.Movies.Inputs;
+namespace API.GraphQL.Movies.Models;
 
 public class CreateActorInput
 {
